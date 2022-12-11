@@ -8,7 +8,7 @@ export async function getAllExpenses(req, res){
     let newObjectQuery = []
     let minvalue = {};
     let maxvalue = {};
-    newObjectQuery.push({user: req.session.user.email})
+
     if (params?.minValue && params?.maxValue){
         minvalue =  {value: {$gte: Number(`${params?.minValue}`)}}
         maxvalue = {value: {$lte: Number(`${params?.maxValue}`)}}
@@ -79,8 +79,8 @@ export async function createExpense(req, res){
     expense.type === 'income' ? expense.category = 'income' : expense.category = expense.category.label
     expense.value = +expense.value
     expense.date = new Date(expense.date).toLocaleDateString('pt-BR')
-    expense.user = req.session.user.email
-    console.log(req.session)
+    expense.user = req.session?.user.email
+
 
     await collection.insertOne(expense)
 
