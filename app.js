@@ -19,7 +19,7 @@ app.use(session({
     },
     resave: false,
     saveUninitialized: true,
-    sameSite: false,
+    sameSite: 'none',
     secure: true
 }))
 
