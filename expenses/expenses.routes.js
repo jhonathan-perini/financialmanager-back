@@ -6,9 +6,9 @@ import {createExpense, deleteExpense, getAllExpenses, getSumExpenses, updateExpe
 
 const expensesRouter = Router()
 
-expensesRouter.route('/expenses').get(requireAuth, getAllExpenses).post(requireAuth,createExpense)
-expensesRouter.route('/expenses/:id').patch(requireAuth,updateExpense).delete(requireAuth,deleteExpense)
-expensesRouter.route('/expenses/category').get(requireAuth,getSumExpenses)
+expensesRouter.route('/expenses').get(getAllExpenses).post(createExpense)
+expensesRouter.route('/expenses/:id').patch(updateExpense).delete(deleteExpense)
+expensesRouter.route('/expenses/category').get(getSumExpenses)
 
 
 export default expensesRouter
