@@ -20,7 +20,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     sameSite: false,
-    secure: false
+    secure: true
 }))
 
 export function requireAuth(req, res, next) {
@@ -34,7 +34,7 @@ export function requireAuth(req, res, next) {
 
 
 app.use(cors({
-    origin: ['http://ec2-54-196-192-107.compute-1.amazonaws.com', 'http://localhost:5173', 'https://financial-manager.onrender.com'],
+    origin: ['https://financial-manager.onrender.com', 'http://localhost:5173', 'https://financial-manager.onrender.com/'],
     credentials: true
 }));
 app.use((req,res, next) => {
